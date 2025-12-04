@@ -24,9 +24,24 @@ def load_emoji_metadata(metadata_path: str = DEFAULT_METADATA_PATH) -> Dict:
         
     Returns:
         Dictionary containing emoji metadata
+        
+    Raises:
+        FileNotFoundError: If the metadata file doesn't exist
+        json.JSONDecodeError: If the file contains invalid JSON
     """
-    with open(metadata_path, 'r', encoding='utf-8') as f:
-        return json.load(f)
+    try:
+        with open(metadata_path, 'r', encoding='utf-8') as f:
+            return json.load(f)
+    except FileNotFoundError:
+        raise FileNotFoundError(
+            f"Metadata file not found at '{metadata_path}'. "
+            "Please run: python3 download_emojis.py"
+        )
+    except json.JSONDecodeError as e:
+        raise json.JSONDecodeError(
+            f"Invalid JSON in metadata file: {e.msg}",
+            e.doc, e.pos
+        )
 
 
 def find_emoji_by_name(metadata: Dict, search_term: str) -> List[Dict]:
