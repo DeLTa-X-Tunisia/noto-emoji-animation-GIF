@@ -64,6 +64,22 @@ def fetch_emoji_list() -> List[Tuple[str, str]]:
         sys.exit(1)
 
 
+def sanitize_filename(name: str, codepoint: str) -> str:
+    """
+    Create a safe filename from emoji name and codepoint.
+    
+    Args:
+        name: The name/tag of the emoji
+        codepoint: The Unicode codepoint
+    
+    Returns:
+        Sanitized filename string
+    """
+    filename = f"{name}_{codepoint}.gif"
+    # Replace any characters that might be problematic in filenames
+    return "".join(c if c.isalnum() or c in "._- " else "_" for c in filename)
+
+
 def download_emoji(codepoint: str, name: str, output_dir: Path, size: int = 512) -> bool:
     """
     Download a single emoji GIF.
@@ -78,10 +94,7 @@ def download_emoji(codepoint: str, name: str, output_dir: Path, size: int = 512)
         True if download was successful, False otherwise
     """
     url = BASE_URL.format(codepoint=codepoint, size=size)
-    # Create a safe filename
-    filename = f"{name}_{codepoint}.gif"
-    # Replace any characters that might be problematic in filenames
-    filename = "".join(c if c.isalnum() or c in "._- " else "_" for c in filename)
+    filename = sanitize_filename(name, codepoint)
     filepath = output_dir / filename
     
     try:
@@ -127,7 +140,7 @@ def create_metadata(emojis: List[Tuple[str, str]], output_dir: Path, size: int):
             {
                 "codepoint": codepoint,
                 "name": name,
-                "filename": f"{name}_{codepoint}.gif".replace(" ", "_")
+                "filename": sanitize_filename(name, codepoint)
             }
             for codepoint, name in emojis
         ]
