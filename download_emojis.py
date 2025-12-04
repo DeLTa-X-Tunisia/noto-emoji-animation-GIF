@@ -45,7 +45,7 @@ def fetch_emoji_list() -> List[Tuple[str, str]]:
             codepoint = icon.get('codepoint', '')
             # Get the first tag as the name, removing brackets
             tags = icon.get('tags', [])
-            if tags and len(tags) > 0:
+            if tags:
                 name = tags[0].strip('[]')
             else:
                 name = codepoint
@@ -77,7 +77,8 @@ def sanitize_filename(name: str, codepoint: str) -> str:
     """
     filename = f"{name}_{codepoint}.gif"
     # Replace any characters that might be problematic in filenames
-    return "".join(c if c.isalnum() or c in "._- " else "_" for c in filename)
+    # Allow alphanumeric, dots, dashes, and underscores only
+    return "".join(c if c.isalnum() or c in "._-" else "_" for c in filename)
 
 
 def download_emoji(codepoint: str, name: str, output_dir: Path, size: int = 512) -> bool:
