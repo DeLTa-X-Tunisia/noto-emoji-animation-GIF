@@ -1,0 +1,33 @@
+{
+  "source": "Google Fonts Noto Emoji Animation",
+  "source_url": "https://googlefonts.github.io/noto-emoji-animation/",
+  "total_emojis": 1500,
+  "gif_size": 512,
+  "emojis": [
+    {
+      "codepoint": "1f600",
+      "name": "grinning face",
+      "filename": "grinning_face_1f600.gif"
+    },
+    {
+      "codepoint": "1f970",
+      "name": "smiling face with hearts",
+      "filename": "smiling_face_with_hearts_1f970.gif"
+    },
+    {
+      "codepoint": "1f389",
+      "name": "party popper",
+      "filename": "party_popper_1f389.gif"
+    },
+    {
+      "codepoint": "2764",
+      "name": "red heart",
+      "filename": "red_heart_2764.gif"
+    },
+    {
+      "codepoint": "1f44d",
+      "name": "thumbs up",
+      "filename": "thumbs_up_1f44d.gif"
+    }
+  ]
+}

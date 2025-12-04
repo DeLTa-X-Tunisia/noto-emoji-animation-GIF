@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Noto Emoji Animation Example</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        
+        h1 {
+            color: #667eea;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 40px;
+        }
+        
+        .emoji-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .emoji-card {
+            text-align: center;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            transition: transform 0.2s, box-shadow 0.2s;
+            cursor: pointer;
+        }
+        
+        .emoji-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .emoji-card img {
+            width: 64px;
+            height: 64px;
+            margin-bottom: 10px;
+        }
+        
+        .emoji-name {
+            font-size: 12px;
+            color: #666;
+            word-wrap: break-word;
+        }
+        
+        .info-box {
+            background: #e7f3ff;
+            border-left: 4px solid #667eea;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        
+        .code-block {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            padding: 20px;
+            border-radius: 10px;
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+        
+        .code-block code {
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎉 Noto Emoji Animation Example</h1>
+        <p class="subtitle">Interactive demonstration of animated Noto Emojis</p>
+        
+        <div class="info-box">
+            <strong>📌 Note:</strong> This example shows how to use the animated emoji GIFs in your web projects. 
+            Replace the placeholder paths with actual paths to your downloaded emojis.
+        </div>
+        
+        <h2>Sample Emoji Gallery</h2>
+        <div class="emoji-grid">
+            <div class="emoji-card">
+                <img src="../emojis/grinning_face_1f600.gif" 
+                     alt="Grinning Face" 
+                     onerror="this.src='https://via.placeholder.com/64?text=😀'">
+                <div class="emoji-name">Grinning Face</div>
+            </div>
+            <div class="emoji-card">
+                <img src="../emojis/smiling_face_with_hearts_1f970.gif" 
+                     alt="Smiling Face with Hearts" 
+                     onerror="this.src='https://via.placeholder.com/64?text=🥰'">
+                <div class="emoji-name">Smiling Face with Hearts</div>
+            </div>
+            <div class="emoji-card">
+                <img src="../emojis/party_popper_1f389.gif" 
+                     alt="Party Popper" 
+                     onerror="this.src='https://via.placeholder.com/64?text=🎉'">
+                <div class="emoji-name">Party Popper</div>
+            </div>
+            <div class="emoji-card">
+                <img src="../emojis/red_heart_2764.gif" 
+                     alt="Red Heart" 
+                     onerror="this.src='https://via.placeholder.com/64?text=❤️'">
+                <div class="emoji-name">Red Heart</div>
+            </div>
+            <div class="emoji-card">
+                <img src="../emojis/thumbs_up_1f44d.gif" 
+                     alt="Thumbs Up" 
+                     onerror="this.src='https://via.placeholder.com/64?text=👍'">
+                <div class="emoji-name">Thumbs Up</div>
+            </div>
+            <div class="emoji-card">
+                <img src="../emojis/fire_1f525.gif" 
+                     alt="Fire" 
+                     onerror="this.src='https://via.placeholder.com/64?text=🔥'">
+                <div class="emoji-name">Fire</div>
+            </div>
+        </div>
+        
+        <h2>Usage Examples</h2>
+        
+        <h3>Basic HTML</h3>
+        <div class="code-block">
+            <code>&lt;img src="emojis/grinning_face_1f600.gif" alt="Grinning Face" width="64" height="64"&gt;</code>
+        </div>
+        
+        <h3>CSS Background</h3>
+        <div class="code-block">
+            <code>.emoji-bg {
+    background-image: url('emojis/party_popper_1f389.gif');
+    background-size: 64px 64px;
+    background-repeat: no-repeat;
+}</code>
+        </div>
+        
+        <h3>JavaScript</h3>
+        <div class="code-block">
+            <code>// Dynamically load emoji
+const img = document.createElement('img');
+img.src = 'emojis/smiling_face_with_hearts_1f970.gif';
+img.alt = 'Smiling Face with Hearts';
+document.body.appendChild(img);</code>
+        </div>
+        
+        <div class="info-box" style="margin-top: 30px;">
+            <strong>💡 Tip:</strong> After running <code>download_emojis.py</code>, 
+            all emoji GIFs will be available in the <code>emojis/</code> directory. 
+            Check the <code>metadata.json</code> file for the complete list of available emojis!
+        </div>
+    </div>
+</body>
+</html>
